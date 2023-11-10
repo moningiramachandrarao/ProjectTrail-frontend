@@ -31,13 +31,12 @@ function Registered() {
       <img
         src={arr.img1}
         alt={arr.carName}
-        className="img-fluid d-block mx-auto mt-3"
-        style={{ maxWidth: "80%", maxHeight: "90vh" }}
+        className="img-fluid d-block mx-auto mt-3 w-100"
       />
-      <div className="bg-light m-2 px-1 py-2 text-dark">
+      <div className="bg-light my-2 px-2 py-2 text-dark">
         <h3>{arr.carName}</h3>
         <p className="fs-5">Model: {arr.model}</p>
-        <p className="fs-5">Price: {arr.price}</p>
+        <p className="fs-5">Price: {arr.price}/-</p>
       </div>
     </div>
   );

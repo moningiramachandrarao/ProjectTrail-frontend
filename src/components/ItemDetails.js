@@ -72,14 +72,14 @@ function ItemDetails() {
       </div>
       <div className="bg-light text-center my-3">
         <h2>{arr.carName}</h2>
-        <p>Model: {arr.model}</p>
-        <p>Year: {arr.year}</p>
-        <p>Price: {arr.price}</p>
+        <p>Model:{arr.model}</p>
+        <p>Year:{arr.year}</p>
+        <p>Price:{arr.price}/-</p>
         <div>
-          <Link to="/shop" className="btn btn-outline-primary m-2">
+          <Link to="/shop" className="btn btn-warning m-2">
             Go Back
           </Link>
-          <Link to={`/pay/${id}`} className="btn btn-outline-primary m-2">
+          <Link to={`/pay/${id}`} className="btn btn-warning m-2">
             Pay
           </Link>
         </div>

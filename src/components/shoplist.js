@@ -8,10 +8,10 @@ function ShopList(props) {
               <img className="card-img-top" src={img1} alt={carName} />
               <div className="card-body">
                 <h5 className="card-title">{carName}</h5>
-                <p className="card-text">Carname:{model}</p>
+                <p className="card-text">Model:{model}</p>
                 <p className="card-text">Year:{year}</p>
-                <p className="card-text">Price:{price}</p>
-                <Link className="btn btn-primary" to={"/itemdetails/"+_id} element={<ItemDetails />}>View</Link>
+                <p className="card-text">Price: {price}/-</p>
+                <Link className="btn btn-warning" to={"/itemdetails/"+_id} element={<ItemDetails />}>View</Link>
               </div>
             </div>
           </div>
