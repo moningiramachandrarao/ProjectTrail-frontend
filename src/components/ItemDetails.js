@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import Axios from "axios";
 
 function ItemDetails() {
+  const[boolean,setBoolean]=useState('');
   const [arr, setArr] = useState({
     img1: "",
     img2: "",
@@ -14,6 +15,10 @@ function ItemDetails() {
     model: "",
     price: "",
     year: "",
+    topSpeed:"",
+    enginetype:"",
+    enginecapacity:"",
+    milage:""
   });
   const { id } = useParams();
 
@@ -21,15 +26,17 @@ function ItemDetails() {
     Axios.get(`http://localhost:4000/useRoute/${id}`)
       .then((res) => {
         if (res.status === 200) {
-          const { img1, img2, img3, img4, img5, img6, carName, model, price, year } = res.data;
-          setArr({ img1, img2, img3, img4, img5, img6, carName, model, price, year });
+          const { img1, img2, img3, img4, img5, img6, carName, model, price, year ,topSpeed,enginetype,enginecapacity,milage} = res.data;
+          setArr({ img1, img2, img3, img4, img5, img6, carName, model, price, year ,topSpeed,enginetype,enginecapacity,milage});
         } else {
           throw new Error("Failed to fetch data");
         }
       })
       .catch((err) => alert(err));
   }, [id]);
-
+const features=()=>{
+  setBoolean(!boolean);
+}
   return (
     <div className="container">
       <div id="demo" className="carousel slide" data-bs-ride="carousel">
@@ -72,14 +79,22 @@ function ItemDetails() {
       </div>
       <div className="bg-light text-center my-3">
         <h2>{arr.carName}</h2>
-        <p>Model:{arr.model}</p>
-        <p>Year:{arr.year}</p>
-        <p>Price:{arr.price}/-</p>
-        <div>
-          <Link to="/shop" className="btn btn-warning m-2">
+        <p><b>Model:</b>{arr.model}</p>
+        <p><b>Year:</b>{arr.year}</p>
+        <p><b>Price:</b>{arr.price}/-</p>
+        <buttton onClick={features} class="btn btn-mute" style={{ backgroundColor: "#ffac3c", color: "#282c4c" }}>Features</buttton>
+      {boolean && <div >
+        <p><b>Top Speed:</b>{arr.topSpeed}</p>
+        <p><b>Engine Type:</b>{arr.enginetype}</p>
+        <p><b>Engine Capacity:</b>{arr.enginecapacity}</p>
+        <p><b>Milage:</b>{arr.milage}</p>
+        </div>}
+        <div >
+
+          <Link to="/shop" className="btn btn-mute m-2" style={{ backgroundColor: "#ffac3c", color: "#282c4c" }}>
             Go Back
           </Link>
-          <Link to={`/pay/${id}`} className="btn btn-warning m-2">
+          <Link to={`/pay/${id}`} className="btn btn-mute m-2" style={{ backgroundColor: "#ffac3c", color: "#282c4c" }}>
             Pay
           </Link>
         </div>

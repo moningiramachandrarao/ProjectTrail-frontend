@@ -11,7 +11,7 @@ function ShopList(props) {
                 <p className="card-text">Model:{model}</p>
                 <p className="card-text">Year:{year}</p>
                 <p className="card-text">Price: {price}/-</p>
-                <Link className="btn btn-warning" to={"/itemdetails/"+_id} element={<ItemDetails />}>View</Link>
+                <Link className="btn btn-mute" style={{ backgroundColor: "#ffac3c", color: "#282c4c" }}to={"/itemdetails/"+_id} element={<ItemDetails />}>View</Link>
               </div>
             </div>
           </div>

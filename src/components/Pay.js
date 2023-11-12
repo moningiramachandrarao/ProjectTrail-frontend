@@ -78,7 +78,7 @@ function Pay(props) {
             <label for="price" class="form-label"> Price:</label>
             <input type="text" class="form-control"defaultValue={arr.price} id="price"/>
         </div>
-<Link to={`/registered/${id}`} class="text-decoration-none text-light"> <button onClick={handleSubmit} class="btn btn-warning " type="submit">Submit</button></Link>
+<Link to={`/registered/${id}`} class="text-decoration-none text-light"> <button onClick={handleSubmit} style={{ backgroundColor: "#ffac3c", color: "#282c4c" }} class="btn btn-mute" type="submit">Submit</button></Link>
     
        </form>
       </div>
