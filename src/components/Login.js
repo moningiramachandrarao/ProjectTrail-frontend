@@ -1,27 +1,24 @@
+// Login.jsx
+
 import React, { useState } from 'react';
 import Axios from 'axios';
-import Hasher from './hasher'; 
+import Hasher from './hasher';
+import { Link } from 'react-router-dom';
 
-function Login() {
+function Login({ onLogin }) {
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState('');
 
   const redirectToHome = () => {
-    window.location.href = '/';
+    window.location.href = '/home';
   };
-
-  const submit= (email, password) => {
-    setLoading(true);
-
+  const submit = (email, password) => {
     Axios.get('http://localhost:4000/loginRoute/get-password/' + email)
       .then((res) => {
         if (res.status === 200) {
           const data = res.data;
           if (!data) {
-            setMessage("Email is not registered");
-            setLoading(false);
+            alert('Email is not registered');
             return;
           }
 
@@ -32,29 +29,24 @@ function Login() {
                 localStorage.setItem('id', data._id);
                 localStorage.setItem('islogged', true);
 
+                onLogin();
                 redirectToHome();
               } else {
-                setMessage("Login Failed(incorrect password or email)");
-                setLoading(false);
+                alert('Login Failed (incorrect password or email)');
               }
             })
             .catch((error) => {
               console.error('Error hashing password:', error);
-              setLoading(false);
             });
-        } else {
-          setLoading(false);
         }
       })
       .catch((err) => {
         alert(err);
-        setLoading(false);
       });
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
     submit(email, pass);
   };
 
@@ -77,10 +69,18 @@ function Login() {
               className='form-control mb-3 col-8'
               placeholder='Enter your password'
             />
-            <button type='submit' className='btn btn-success d-flex justify-content-center' style={{ margin: '0px auto' }}>
+            <button
+              type='submit'
+              className='btn btn-success d-flex justify-content-center'
+              style={{ margin: '0px auto' }}
+            >
               Login
             </button>
           </form>
+          <p>
+            Don't have an account?{' '}
+            <Link to='/signin'>Sign up here</Link>
+          </p>
         </center>
       </form>
     </div>

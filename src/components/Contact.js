@@ -5,7 +5,7 @@ function Contact() {
   const [message, setMessage] = useState('');
 
   const handleMailto = () => {
-    const mailtoLink = `mailto:moningiramachandrarao@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+    const mailtoLink = `mailto:edrivespacecars@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
     window.location.href = mailtoLink;
   };
 
