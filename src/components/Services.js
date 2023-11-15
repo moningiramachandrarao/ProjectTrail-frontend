@@ -1,6 +1,6 @@
 
 import React from 'react';
-
+import {Link} from "react-router-dom";
 function Services() {
   return (
     <div className="container mt-4">
@@ -14,6 +14,7 @@ function Services() {
                 We offer comprehensive car maintenance services such that your
                 vehicle in top condition.
               </p>
+              <Link to="/maintain"> <button class="btn btn-primary"> Maintainence</button></Link>
             </div>
           </div>
         </div>
@@ -26,6 +27,7 @@ function Services() {
                 Our skilled technicians provide high-quality car repair
                 services to get you back on the road.
               </p>
+             <Link to="/repair"> <button className="btn btn-primary" >Repair</button></Link>
             </div>
           </div>
         </div>
@@ -38,6 +40,8 @@ function Services() {
                 Enhance your car's performance and appearance with our premium
                 upgrade services.
               </p>
+           <Link to="/upgrade"> <button class="btn btn-primary" >Upgrades</button></Link>
+
             </div>
           </div>
         </div>

@@ -13,6 +13,11 @@ import "../src/components/footer.css"
 import ItemDetails from './components/ItemDetails';
 import Pay from "./components/Pay";
 import Registered from './components/Registerd';
+import Maintain from "./components/Maintain";
+import Repair from "./components/Repair";
+import Upgrade from "./components/Upgrade";
+import Login from "./components/Login";
+import SignIn from './components/SignIn';
 function App() {
   return (
    
@@ -20,6 +25,7 @@ function App() {
      <HashRouter>
       <Nav/>
       <Routes>
+
         <Route path="/" element={<Home/>}/>
         <Route path="/home" element={<Home/>}/>
         <Route path="/shop" element={<Shop/>}/>
@@ -29,6 +35,9 @@ function App() {
         <Route path="/itemdetails/:id" element={<ItemDetails />}/>
         <Route path="/pay/:id" element={<Pay/>}/>
         <Route path="/registered/:id" element={<Registered/>}/>
+        <Route path="/maintain" element={<Maintain/>}/>
+        <Route path="/repair" element={<Repair/>}/>
+        <Route path="/upgrade" element={<Upgrade/>}/>
       </Routes>
       <Footer />
      </HashRouter>
