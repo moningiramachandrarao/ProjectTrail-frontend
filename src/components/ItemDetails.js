@@ -37,6 +37,15 @@ function ItemDetails() {
 const features=()=>{
   setBoolean(!boolean);
 }
+const redirecttopay=()=>{
+  if(localStorage.getItem('islogged')==='true'){
+    console.log(id);
+    window.location.href='/#/pay/'+id;
+  } 
+  else{
+    window.location.href='/#/login';
+  }
+}
   return (
     <div className="container">
       <div id="demo" className="carousel slide" data-bs-ride="carousel">
@@ -94,9 +103,7 @@ const features=()=>{
           <Link to="/shop" className="btn btn-mute m-2" style={{ backgroundColor: "#ffac3c", color: "#282c4c" }}>
             Go Back
           </Link>
-          <Link to={`/pay/${id}`} className="btn btn-mute m-2" style={{ backgroundColor: "#ffac3c", color: "#282c4c" }}>
-            Pay
-          </Link>
+          <button className="btn btn-mute m-2" style={{ backgroundColor: "#ffac3c", color: "#282c4c" }} onClick={redirecttopay}>Pay</button>
         </div>
       </div>
     </div>

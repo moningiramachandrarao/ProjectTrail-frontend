@@ -1,5 +1,3 @@
-// Login.jsx
-
 import React, { useState } from 'react';
 import Axios from 'axios';
 import Hasher from './hasher';
@@ -10,28 +8,32 @@ function Login({ onLogin }) {
   const [pass, setPass] = useState('');
 
   const redirectToHome = () => {
-    window.location.href = '/home';
+    window.location.href = '/';
   };
-  const submit = (email, password) => {
+  const submit = (event) => {
+    event.preventDefault();
+    console.log('http://localhost:4000/loginRoute/get-password/' + email);
     Axios.get('http://localhost:4000/loginRoute/get-password/' + email)
       .then((res) => {
         if (res.status === 200) {
           const data = res.data;
           if (!data) {
+            console.log('Email is not registered');
             alert('Email is not registered');
             return;
           }
 
-          Hasher(password)
+          Hasher(pass)
             .then((hashedPassword) => {
               if (hashedPassword === data.password) {
-                localStorage.setItem('username', data.name);
+              
                 localStorage.setItem('id', data._id);
+                localStorage.setItem('email',data.email);
                 localStorage.setItem('islogged', true);
 
-                onLogin();
                 redirectToHome();
               } else {
+                console.log('Login Failed (incorrect password or email)');
                 alert('Login Failed (incorrect password or email)');
               }
             })
@@ -45,16 +47,12 @@ function Login({ onLogin }) {
       });
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    submit(email, pass);
-  };
 
   return (
-    <div>
+    <div className='container'>
       <form>
-        <center className='row'>
-          <form onSubmit={handleSubmit}>
+        <center className='row '>
+          <form>
             <input
               type='text'
               id='email'
@@ -70,16 +68,16 @@ function Login({ onLogin }) {
               placeholder='Enter your password'
             />
             <button
-              type='submit'
               className='btn btn-success d-flex justify-content-center'
               style={{ margin: '0px auto' }}
+              onClick={submit}
             >
               Login
             </button>
           </form>
           <p>
             Don't have an account?{' '}
-            <Link to='/signin'>Sign up here</Link>
+            <Link to='/signin' >Sign up here</Link>
           </p>
         </center>
       </form>

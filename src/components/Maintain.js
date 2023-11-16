@@ -3,7 +3,7 @@ import Axios from "axios";
 import {Link} from "react-router-dom";
 function Maintain(){
     const [name,setName]=useState('');
-    const [email,setemail]=useState('');
+    const email="";
     const [mobile,setMobile]=useState('');
     const[carName,setcarName]=useState('');
     const[model,setModel]=useState('');
@@ -30,6 +30,14 @@ function Maintain(){
           .catch((err) => alert("Error: " + err));
       
       };
+      const redirect=()=>{
+        if(localStorage.getItem('islogged')==='true'){
+          handleSubmit();
+        } 
+        else{
+          window.location.href='/#/login';
+        }
+      }
     return(<div class="container"> 
         <div class="mb-3">
             <label for="name" class="form-label"> Name:</label>
@@ -37,7 +45,7 @@ function Maintain(){
         </div>
         <div class="mb-3">
             <label for="email" class="form-label"> Email:</label>
-            <input type="email" class="form-control"onChange={(event)=>setemail(event.target.value)}placeholder="Enter Your E-mail" id="email"/>
+            <input type="email" class="form-control"defaultValue={localStorage.getItem("email")}placeholder="Enter Your E-mail" id="email"/>
         </div>
         <div class="mb-3">
             <label for="phno" class="form-label"> Mobile:</label>
@@ -56,7 +64,7 @@ function Maintain(){
             <label for="type" class="form-label"> Type:</label>
             <input type="text" class="form-control"onChange={(event)=>setType(event.target.value)} placeholder="Enter Type" id="type"/>
         </div>
-        <button onClick={handleSubmit} style={{ backgroundColor: "#ffac3c", color: "#282c4c" }} class="btn btn-mute" type="submit">Submit</button>
+        <button onClick={redirect} style={{ backgroundColor: "#ffac3c", color: "#282c4c" }} class="btn btn-mute" type="submit">Submit</button>
         <Link to="/services"><button style={{ backgroundColor: "#ffac3c", color: "#282c4c" }} class="btn btn-mute mx-2" >Go back</button></Link>
 
     </div>

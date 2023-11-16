@@ -38,6 +38,8 @@ function App() {
         <Route path="/maintain" element={<Maintain/>}/>
         <Route path="/repair" element={<Repair/>}/>
         <Route path="/upgrade" element={<Upgrade/>}/>
+        <Route path="/signin" element={<SignIn/>}/>
+        <Route path="/login" element={<Login/>}/>
       </Routes>
       <Footer />
      </HashRouter>

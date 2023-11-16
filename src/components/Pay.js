@@ -24,7 +24,7 @@ function Pay(props) {
           .catch((err) => alert(err));
       }, [id]);
       const [name,setName]=useState('');
-      const [email,setemail]=useState('');
+      const email="";
       const [mobile,setMobile]=useState('');
       const handleSubmit = () => {
         const data = {
@@ -59,7 +59,7 @@ function Pay(props) {
         </div>
         <div class="mb-3">
             <label for="email" class="form-label"> Email:</label>
-            <input type="email" class="form-control"onChange={(event)=>setemail(event.target.value)}placeholder="Enter Your E-mail" id="email"/>
+            <input type="email" class="form-control" defaultValue={localStorage.getItem("email")}placeholder="Enter Your E-mail" id="email"/>
         </div>
         <div class="mb-3">
             <label for="phno" class="form-label"> Mobile:</label>
