@@ -4,7 +4,7 @@ function ShopList(props) {
     const { _id, carName, model, year, price, img1} = props.obj;
     return (
         <div className="col-md-4 mb-4">
-            <div className="card" style={{ backgroundColor: "#ffac3c", color: "#282c4c" }}>
+            <div className="card" style={{ backgroundColor: "#ffac3c", color: "#282c4c" ,minHeight: "20%", minWidth: "30%" }}>
               <img className="card-img-top" src={img1} alt={carName} />
               <div className="card-body">
                 <h5 className="card-title">{carName}</h5>
