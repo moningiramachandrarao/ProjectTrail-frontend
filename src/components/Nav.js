@@ -4,6 +4,7 @@ import "./footer.css"
 function Nav() {
     const handleLogout = () => {
         localStorage.setItem("islogged", 'false');
+        window.location.href="/#/";
         window.location.reload();
     }
 
