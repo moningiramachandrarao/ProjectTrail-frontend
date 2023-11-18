@@ -29,7 +29,7 @@ function Services() {
       <h1 className="text-center yellow">Our Services</h1>
       <div className="row">
         <div className="col-md-4">
-          <div className="card mb-4 "style={{backgroundColor:"#ffac3c" ,minHeight:"30vh"}}>
+          <div className="card mb-4 "style={{backgroundColor:"#ffac3c"}}>
         <div className="card-body" >
               <h5 className="card-title" style={{color:"#282c4c"}}>Car Maintenance</h5>
               <p className="card-text" style={{color:"#282c4c"}}>
@@ -42,7 +42,7 @@ function Services() {
         </div>
 
         <div className="col-md-4">
-          <div className="card mb-4" style={{backgroundColor:"#ffac3c",minHeight:"30vh"}}>
+          <div className="card mb-4" style={{backgroundColor:"#ffac3c"}}>
             <div className="card-body">
               <h5 className="card-title" style={{color:"#282c4c"}}>Car Repairs</h5>
               <p className="card-text" style={{color:"#282c4c"}}>
@@ -55,7 +55,7 @@ function Services() {
         </div>
 
         <div className="col-md-4">
-          <div className="card mb-4" style={{backgroundColor:"#ffac3c",minHeight:"30vh"}}>
+          <div className="card mb-4" style={{backgroundColor:"#ffac3c"}}>
             <div className="card-body">
               <h5 className="card-title" style={{color:"#282c4c"}}>Car Upgrades</h5>
               <p className="card-text" style={{color:"#282c4c"}}>
