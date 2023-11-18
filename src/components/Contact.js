@@ -3,12 +3,12 @@ import React, { useState } from 'react';
 function Contact() {
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
-
   const handleMailto = () => {
     const mailtoLink = `mailto:edrivespacecars@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
-    window.location.href = mailtoLink;
+    window.open(mailtoLink, '_blank');
+    window.location.href="/#home";
   };
-
+  
   return (
     <div className="container mt-4 px-3">
       <div class="px-3" style={{ backgroundColor: "#ffac3c", color: "#282c4c" }}>
