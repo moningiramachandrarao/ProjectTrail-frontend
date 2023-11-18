@@ -3,7 +3,7 @@ import Axios from "axios";
 import {Link} from "react-router-dom";
 function Repair(){
     const [name,setName]=useState('');
-    const email="";
+    const email=localStorage.getItem("email");
     const [mobile,setMobile]=useState('');
     const[carName,setcarName]=useState('');
     const[model,setModel]=useState('');
@@ -19,7 +19,7 @@ function Repair(){
 
         };
       
-        Axios.post("http://localhost:4000/repairRoute/add-repair/", data)
+        Axios.post("https://backendss-uvix.onrender.com/repairRoute/add-repair/", data)
           .then((res) => {
             if (res.status === 200) {
               alert("Successfully Registered");
@@ -30,14 +30,6 @@ function Repair(){
           .catch((err) => alert("Error: " + err));
       
       };
-      const redirect=()=>{
-        if(localStorage.getItem('islogged')==='true'){
-          handleSubmit();
-        } 
-        else{
-          window.location.href='/#/login';
-        }
-      }
     return(<div class="container"> 
         <div class="mb-3">
             <label for="name" class="form-label"> Name:</label>
@@ -45,7 +37,7 @@ function Repair(){
         </div>
         <div class="mb-3">
             <label for="email" class="form-label"> Email:</label>
-            <input type="email" class="form-control"defaultValue={localStorage.getItem("email")}placeholder="Enter Your E-mail" id="email"/>
+            <input type="email" class="form-control" defaultValue={localStorage.getItem("email")}placeholder="Enter Your E-mail" id="email" disabled/>
         </div>
         <div class="mb-3">
             <label for="phno" class="form-label"> Mobile:</label>
@@ -61,10 +53,10 @@ function Repair(){
             <input type="text" class="form-control" id="model" onChange={(event)=>setModel(event.target.value)}placeholder="Enter carname"/>
         </div>
         <div class="mb-3">
-            <label for="type" class="form-label"> Type:</label>
-            <input type="text" class="form-control"onChange={(event)=>setType(event.target.value)} placeholder="Enter Type" id="type"/>
+            <label for="type" class="form-label">  Type Of Repair:</label>
+            <input type="text" class="form-control"onChange={(event)=>setType(event.target.value)} placeholder="Enter  Type Of Repair" id="type"/>
         </div>
-        <button onClick={redirect} style={{ backgroundColor: "#ffac3c", color: "#282c4c" }} class="btn btn-mute" type="submit">Submit</button>
+        <button onClick={handleSubmit} style={{ backgroundColor: "#ffac3c", color: "#282c4c" }} class="btn btn-mute" type="submit">Submit</button>
         <Link to="/services"><button style={{ backgroundColor: "#ffac3c", color: "#282c4c" }} class="btn btn-mute mx-2" >Go back</button></Link>
 
     </div>

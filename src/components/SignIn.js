@@ -1,5 +1,3 @@
-
-import {Link} from "react-router-dom";
 import React, { useState } from 'react';
 import Axios from 'axios';
 import Hasher from './hasher';
@@ -10,8 +8,6 @@ function SignIn() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [passwordMatchError, setPasswordMatchError] = useState('');
   const [registrationError, setRegistrationError] = useState('');
-
-
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -28,71 +24,79 @@ function SignIn() {
 
       const data = {
         email: email,
-        password: hashedPassword
+        password: hashedPassword,
       };
 
-      await Axios.post('http://localhost:4000/loginRoute/register/', data).then((res)=>{
-        if(res.status===200){
-          alert("Registration Successful");
-          setTimeout(() => {
-            window.location.href="/#/home";
-          }, 2000);
-        }
-        else{
-          console.error('Unexpected status code:', res.status);
-        }
-      });
+      const res = await Axios.post('https://backendss-uvix.onrender.com/loginRoute/register/', data);
 
-      
-    } 
-    catch (error) {
+      if (res.status === 200) {
+        alert('Registration Successful');
+        setTimeout(() => {
+          window.location.href = '/#/home';
+        }, 2000);
+      } else {
+        console.error('Unexpected status code:', res.status);
+      }
+    } catch (error) {
       setRegistrationError('Error during registration. Please try again.');
-    } 
-    finally {
+    } finally {
       event.target.reset();
     }
   };
 
   return (
-    <div className="container">
-      <div style={{ textAlign: 'center' }}>
+    <div className="container" style={{ maxWidth: '50%' }}>
+      <div className="container">
         <form onSubmit={handleSubmit}>
-          <label htmlFor="email">Email:</label>
-          <input
-            type="text"
-            id="email"
-            onChange={(event) => setEmail(event.target.value)}
-            className="form-control mb-3 col-8"
-            placeholder="Enter your email"
-          />
+          <div className="mb-3">
+            <label htmlFor="email" className="form-label">
+              Email:
+            </label>
+            <input
+              type="text"
+              id="email"
+              onChange={(event) => setEmail(event.target.value)}
+              className="form-control"
+              placeholder="Enter your email"
+            />
+          </div>
 
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            onChange={(event)=>{setPassword(event.target.value)}}
-            className="form-control mb-3 col-8"
-            placeholder="Enter your password"
-          />
+          <div className="mb-3">
+            <label htmlFor="password" className="form-label">
+              Password:
+            </label>
+            <input
+              type="password"
+              id="password"
+              onChange={(event) => setPassword(event.target.value)}
+              className="form-control"
+              placeholder="Enter your password"
+            />
+          </div>
 
-          <label htmlFor="confirmPassword">Confirm Password:</label>
-          <input
-            type="password"
-            id="confirmPassword"
-            onChange={(event)=>{setConfirmPassword(event.target.value)}}
-            className="form-control mb-3 col-8"
-            placeholder="Confirm your password"
-          />
+          <div className="mb-3">
+            <label htmlFor="confirmPassword" className="form-label">
+              Confirm Password:
+            </label>
+            <input
+              type="password"
+              id="confirmPassword"
+              onChange={(event) => setConfirmPassword(event.target.value)}
+              className="form-control"
+              placeholder="Confirm your password"
+            />
+          </div>
 
-          <button type="submit" className="btn btn-success" style={{ margin: '0px auto' }}>
+          <button
+            type="submit"
+            className="btn btn-warning"
+            style={{ backgroundColor: '#ffac3c', color: '#282c4c' }}
+          >
             Register
           </button>
         </form>
 
-        <div style={{ marginTop: '10px' }}>
-          <Link to="/">Login</Link>
-        </div>
-
+        <div style={{ marginTop: '10px' }}></div>
         {passwordMatchError && <div style={{ color: 'red' }}>{passwordMatchError}</div>}
         {registrationError && <div style={{ color: 'red' }}>{registrationError}</div>}
       </div>

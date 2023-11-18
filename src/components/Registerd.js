@@ -12,7 +12,7 @@ function Registered() {
   const { id } = useParams();
 
   useEffect(() => {
-    Axios.get(`http://localhost:4000/useRoute/${id}`)
+    Axios.get(`https://backendss-uvix.onrender.com/useRoute/${id}`)
       .then((res) => {
         if (res.status === 200) {
           const { carName, model, price, img1 } = res.data;
@@ -26,17 +26,17 @@ function Registered() {
 
   return (
     <div className="container text-center mt-4 text-light">
-      <h1>You have successfully registered!</h1>
-      <h2>Details</h2>
+      <h1 style={{color: "#ffac3c"}}>You have successfully registered!</h1>
+      <h2 style={{color: "#ffac3c"}}>Details</h2>
       <img
         src={arr.img1}
         alt={arr.carName}
         className="img-fluid d-block mx-auto mt-3 w-100"
       />
-      <div className="bg-light my-2 px-2 py-2 text-dark">
+      <div className="my-2 px-2 py-2" style={{ backgroundColor: "#ffac3c", color: "#282c4c" }}>
         <h3>{arr.carName}</h3>
         <p className="fs-5">Model: {arr.model}</p>
-        <p className="fs-5">Price: {arr.price}/-</p>
+        <p className="fs-5">Price: {arr.price}</p>
       </div>
     </div>
   );

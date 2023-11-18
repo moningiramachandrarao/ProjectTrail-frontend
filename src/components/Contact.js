@@ -10,14 +10,16 @@ function Contact() {
   };
 
   return (
-    <div className="container mt-4">
-      <h1 className="text-center yellow">Contact Us</h1>
+    <div className="container mt-4 px-3">
+      <div class="px-3" style={{ backgroundColor: "#ffac3c", color: "#282c4c" }}>
+      <h1 className="text-center" style={{color: "#282c4c" }}> <i className="fa fa-envelope p-2"></i>Mail Us</h1>
 
-      <div className="mb-3">
-        <label htmlFor="name" className="form-label">Subject:</label>
+      
+      <div className="mb-3"style={{ backgroundColor: "#ffac3c"}}>
+        <label htmlFor="subject" className="form-label" style={{color: "#282c4c" }}>Subject:</label>
         <input
           type="text"
-          id="name"
+          id="subject"
           className="form-control"
           value={subject}
           onChange={(e) => setSubject(e.target.value)}
@@ -26,7 +28,7 @@ function Contact() {
       </div>
 
       <div className="mb-3">
-        <label htmlFor="message" className="form-label">Message:</label>
+        <label htmlFor="message" className="form-label" style={{color: "#282c4c" }}>Message:</label>
         <textarea
           id="message"
           className="form-control"
@@ -36,7 +38,21 @@ function Contact() {
         />
       </div>
 
-      <button onClick={handleMailto} className="btn mt-3" style={{ backgroundColor: "#ffac3c", color: "#282c4c" }}>Send Email</button>
+      <button onClick={handleMailto} className="btn my-3" style={{ backgroundColor: "#282c4c", color: "#ffac3c" }}>Send Email</button>
+</div>
+      <div className="my-4 py-4"style={{ backgroundColor: "#ffac3c", color: "#282c4c" }}>
+        <h1 className="text-center " style={{color: "#282c4c" }}><i className="fa fa-phone p-2"></i>Call Us</h1>
+        <p className="text-center">For inquiries, Feel free to call our Tollfree Numbers: </p>
+        <p className='text-center'><strong>1800101102</strong></p>
+        <p className='text-center'><strong>1800101103</strong></p>
+      </div>
+
+      <div className="my-4 py-4"style={{ backgroundColor: "#ffac3c", color: "#282c4c" }}>
+        <h1 className="text-center " style={{color: "#282c4c" }}><i className="fa fa-whatsapp p-2"></i>WhatsApp Us</h1>
+        <p className="text-center">Send “Hi” to below mentioned WhatsApp number to talk our Customer Care</p>
+        <p className='text-center'><strong>(+91) 8888888888</strong></p>
+        <p className='text-center'><strong>(+91) 9999999999</strong></p>
+      </div>
     </div>
   );
 }

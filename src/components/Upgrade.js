@@ -3,19 +3,11 @@ import Axios from "axios";
 import {Link} from "react-router-dom";
 function Upgrade(){
     const [name,setName]=useState('');
-    const email="";
+    const email=localStorage.getItem("email");
     const [mobile,setMobile]=useState('');
     const[carName,setcarName]=useState('');
     const[model,setModel]=useState('');
     const[type,setType]=useState('');
-    const redirect=()=>{
-      if(localStorage.getItem('islogged')==='true'){
-      handleSubmit();
-      } 
-      else{
-        window.location.href='/#/login';
-      }
-    }
     const handleSubmit = () => {
         const data = {
           name:name,
@@ -26,9 +18,8 @@ function Upgrade(){
           type:type
 
         };
-       
       
-        Axios.post("http://localhost:4000/upgradeRoute/add-upgrade/", data)
+        Axios.post("https://backendss-uvix.onrender.com/upgradeRoute/add-upgrade/", data)
           .then((res) => {
             if (res.status === 200) {
               alert("Successfully Registered");
@@ -46,7 +37,7 @@ function Upgrade(){
         </div>
         <div class="mb-3">
             <label for="email" class="form-label"> Email:</label>
-            <input type="email" class="form-control"defaultValue={localStorage.getItem("email")}placeholder="Enter Your E-mail" id="email"/>
+            <input type="email" class="form-control" defaultValue={localStorage.getItem("email")} placeholder="Enter Your E-mail" id="email" disabled/>
         </div>
         <div class="mb-3">
             <label for="phno" class="form-label"> Mobile:</label>
@@ -62,10 +53,10 @@ function Upgrade(){
             <input type="text" class="form-control" id="model" onChange={(event)=>setModel(event.target.value)}placeholder="Enter carname"/>
         </div>
         <div class="mb-3">
-            <label for="type" class="form-label"> Type:</label>
-            <input type="text" class="form-control"onChange={(event)=>setType(event.target.value)} placeholder="Enter Type" id="type"/>
+            <label for="type" class="form-label">  Type Of Upgrade:</label>
+            <input type="text" class="form-control"onChange={(event)=>setType(event.target.value)} placeholder="Enter  Type Of Upgrade" id="type"/>
         </div>
-        <button onClick={redirect} style={{ backgroundColor: "#ffac3c", color: "#282c4c" }} class="btn btn-mute" type="submit">Submit</button>
+        <button onClick={handleSubmit} style={{ backgroundColor: "#ffac3c", color: "#282c4c" }} class="btn btn-mute" type="submit">Submit</button>
         <Link to="/services"><button style={{ backgroundColor: "#ffac3c", color: "#282c4c" }} class="btn btn-mute mx-2" >Go back</button></Link>
 
     </div>

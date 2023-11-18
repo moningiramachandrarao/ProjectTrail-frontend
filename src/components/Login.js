@@ -3,7 +3,7 @@ import Axios from 'axios';
 import Hasher from './hasher';
 import { Link } from 'react-router-dom';
 
-function Login({ onLogin }) {
+function Login() {
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
 
@@ -12,13 +12,11 @@ function Login({ onLogin }) {
   };
   const submit = (event) => {
     event.preventDefault();
-    console.log('http://localhost:4000/loginRoute/get-password/' + email);
-    Axios.get('http://localhost:4000/loginRoute/get-password/' + email)
+    Axios.get('https://backendss-uvix.onrender.com/loginRoute/get-password/' + email)
       .then((res) => {
         if (res.status === 200) {
           const data = res.data;
           if (!data) {
-            console.log('Email is not registered');
             alert('Email is not registered');
             return;
           }
@@ -49,7 +47,8 @@ function Login({ onLogin }) {
 
 
   return (
-    <div className='container'>
+    <div className='container' style={{ maxWidth: '50%',
+  }}>
       <form>
         <center className='row '>
           <form>
@@ -68,16 +67,16 @@ function Login({ onLogin }) {
               placeholder='Enter your password'
             />
             <button
-              className='btn btn-success d-flex justify-content-center'
-              style={{ margin: '0px auto' }}
+              className='btn btn-mute d-flex justify-content-center my-2'
+              style={{ backgroundColor: "#ffac3c", color: "#282c4c" }}
               onClick={submit}
             >
               Login
             </button>
           </form>
-          <p>
+          <p style={{ color:"white"}}>
             Don't have an account?{' '}
-            <Link to='/signin' >Sign up here</Link>
+            <Link to='/signin' style={{ color: "#ffac3c"}} >Sign up here</Link>
           </p>
         </center>
       </form>

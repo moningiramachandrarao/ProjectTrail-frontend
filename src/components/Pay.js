@@ -12,7 +12,7 @@ function Pay(props) {
  
 
       useEffect(() => {
-        Axios.get(`http://localhost:4000/useRoute/${id}`)
+        Axios.get(`https://backendss-uvix.onrender.com/useRoute/${id}`)
           .then((res) => {
             if (res.status === 200) {
               const {  carName, model, price, year } = res.data;
@@ -24,7 +24,7 @@ function Pay(props) {
           .catch((err) => alert(err));
       }, [id]);
       const [name,setName]=useState('');
-      const email="";
+      const email=localStorage.getItem("email");
       const [mobile,setMobile]=useState('');
       const handleSubmit = () => {
         const data = {
@@ -36,10 +36,9 @@ function Pay(props) {
           price: arr.price,
         };
       
-        Axios.post("http://localhost:4000/userRoute/register", data)
+        Axios.post("https://backendss-uvix.onrender.com/userRoute/register", data)
           .then((res) => {
             if (res.status === 200) {
-              alert("Record added");
             } else {
               alert("Failed to add record");
             }
@@ -59,7 +58,7 @@ function Pay(props) {
         </div>
         <div class="mb-3">
             <label for="email" class="form-label"> Email:</label>
-            <input type="email" class="form-control" defaultValue={localStorage.getItem("email")}placeholder="Enter Your E-mail" id="email"/>
+            <input type="email" class="form-control" defaultValue={localStorage.getItem("email")}placeholder="Enter Your E-mail" id="email" disabled/>
         </div>
         <div class="mb-3">
             <label for="phno" class="form-label"> Mobile:</label>
@@ -68,15 +67,15 @@ function Pay(props) {
         
         <div class="mb-3">
             <label for="car" class="form-label"> Brand:</label>
-            <input type="text" class="form-control"defaultValue={arr.carName} id="car"/>
+            <input type="text" class="form-control"defaultValue={arr.carName} id="car" disabled/>
         </div>
         <div class="mb-3">
             <label for="model" class="form-label"> Carname:</label>
-            <input type="text" class="form-control"defaultValue={arr.model} id="model"/>
+            <input type="text" class="form-control"defaultValue={arr.model} id="model" disabled/>
         </div>
         <div class="mb-3">
             <label for="price" class="form-label"> Price:</label>
-            <input type="text" class="form-control"defaultValue={arr.price} id="price"/>
+            <input type="text" class="form-control"defaultValue={arr.price} id="price" disabled/>
         </div>
 <Link to={`/registered/${id}`} class="text-decoration-none text-light"> <button onClick={handleSubmit} style={{ backgroundColor: "#ffac3c", color: "#282c4c" }} class="btn btn-mute" type="submit">Submit</button></Link>
     
@@ -86,4 +85,3 @@ function Pay(props) {
   }
   
   export default Pay;
-  

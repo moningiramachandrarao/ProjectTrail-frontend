@@ -7,7 +7,7 @@ function Shop() {
   
   useEffect(() => {
     axios
-      .get("http://localhost:4000/useRoute/")
+      .get("https://project-final-backend-bq77.onrender.com/useRoute/")
       .then((res) => {
         if (res.status === 200) {
           setArr(res.data);

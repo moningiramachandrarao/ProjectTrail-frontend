@@ -8,8 +8,8 @@ import Services from "./components/Services";
 import FAQ from "./components/FAQ";
 import Home from "./components/Home";
 import Shop from "./components/Shop";
-import Footer from './components/Footer';
 import "../src/components/footer.css"
+import Footer from "./components/Footer";
 import ItemDetails from './components/ItemDetails';
 import Pay from "./components/Pay";
 import Registered from './components/Registerd';
@@ -41,7 +41,7 @@ function App() {
         <Route path="/signin" element={<SignIn/>}/>
         <Route path="/login" element={<Login/>}/>
       </Routes>
-      <Footer />
+      <Footer/>
      </HashRouter>
     
     </div>

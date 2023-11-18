@@ -3,7 +3,6 @@ import { Link, useParams } from "react-router-dom";
 import Axios from "axios";
 
 function ItemDetails() {
-  const[boolean,setBoolean]=useState('');
   const [arr, setArr] = useState({
     img1: "",
     img2: "",
@@ -23,7 +22,7 @@ function ItemDetails() {
   const { id } = useParams();
 
   useEffect(() => {
-    Axios.get(`http://localhost:4000/useRoute/${id}`)
+    Axios.get(`https://backendss-uvix.onrender.com/useRoute/${id}`)
       .then((res) => {
         if (res.status === 200) {
           const { img1, img2, img3, img4, img5, img6, carName, model, price, year ,topSpeed,enginetype,enginecapacity,milage} = res.data;
@@ -34,9 +33,7 @@ function ItemDetails() {
       })
       .catch((err) => alert(err));
   }, [id]);
-const features=()=>{
-  setBoolean(!boolean);
-}
+
 const redirecttopay=()=>{
   if(localStorage.getItem('islogged')==='true'){
     console.log(id);
@@ -86,24 +83,59 @@ const redirecttopay=()=>{
           <span className="carousel-control-next-icon"></span>
         </button>
       </div>
-      <div className="bg-light text-center my-3">
+      <div className="text-center my-3" style={{backgroundColor:"#ffac3c",color:"#282c4c"}}>
         <h2>{arr.carName}</h2>
-        <p><b>Model:</b>{arr.model}</p>
-        <p><b>Year:</b>{arr.year}</p>
-        <p><b>Price:</b>{arr.price}/-</p>
-        <buttton onClick={features} class="btn btn-mute" style={{ backgroundColor: "#ffac3c", color: "#282c4c" }}>Features</buttton>
-      {boolean && <div >
-        <p><b>Top Speed:</b>{arr.topSpeed}</p>
-        <p><b>Engine Type:</b>{arr.enginetype}</p>
-        <p><b>Engine Capacity:</b>{arr.enginecapacity}</p>
-        <p><b>Milage:</b>{arr.milage}</p>
-        </div>}
+        <div className="d-flex justify-content-center mb-3">
+  <div>
+    <table style={{ borderSpacing: "40px" }}>
+      <tr>
+        <th>Model</th>
+        <th></th>
+        <th>Year</th>
+        
+      </tr>
+      <tr>
+        <td>{arr.model}</td>
+        <td></td>
+        <td>{arr.year}</td>
+      </tr>
+      <tr>
+        <th>Top Speed</th><td></td>
+        <th>Engine Type</th>
+      </tr>
+      <tr>
+        <td>{arr.topSpeed}</td><td></td>
+        <td>{arr.enginetype}</td>
+      </tr>
+      <tr>
+        <th>Engine Capacity</th><td></td>
+        <th>Milage</th>
+      </tr>
+      <tr>
+        <td>{arr.enginecapacity}</td><td></td>
+        <td>{arr.milage}</td>
+      </tr>
+      <tr>
+        <td colSpan="3"><hr/></td>
+      </tr>
+      <tr>
+        <td></td>
+        <th>Price</th>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>₹{arr.price}</td>
+        <td></td>
+      </tr>
+    </table>
+  </div>
+</div>
         <div >
-
-          <Link to="/shop" className="btn btn-mute m-2" style={{ backgroundColor: "#ffac3c", color: "#282c4c" }}>
+          <Link to="/shop" className="btn btn-mute m-2" style={{ backgroundColor: "#282c4c", color: "#ffac3c" }}>
             Go Back
           </Link>
-          <button className="btn btn-mute m-2" style={{ backgroundColor: "#ffac3c", color: "#282c4c" }} onClick={redirecttopay}>Pay</button>
+          <button className="btn btn-mute m-2" style={{ backgroundColor: "#282c4c", color: "#ffac3c" }} onClick={redirecttopay}>Pay</button>
         </div>
       </div>
     </div>
