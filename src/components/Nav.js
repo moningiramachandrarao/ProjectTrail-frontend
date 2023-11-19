@@ -4,8 +4,10 @@ import "./footer.css"
 function Nav() {
     const handleLogout = () => {
         localStorage.setItem("islogged", 'false');
-        window.location.href="/#/";
         window.location.reload();
+        localStorage.removeItem('id');
+        localStorage.removeItem('email');
+        window.location.href="/";
     }
 
     return (
